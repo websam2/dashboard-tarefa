@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Tarefas Simples",
-  description: "Projeto: Dashboard de Tarefas Simples",
+  title: "Dashboard de Tarefas Simples",
+  description: "Uma simples dashboard para gerenciar tarefas",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="br">
+    <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
