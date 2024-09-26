@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
+import {useRouter} from "next/navigation"; 
 
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Checkbox } from "./ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface Task {
 	id: number;
@@ -19,12 +21,6 @@ export default function TaskList() {
 			description: "Descrição da tarefa 1",
 			completed: false,
 		},
-		{
-			id: 2,
-			title: "Tarefa 2",
-			description: "Descrição da tarefa 2",
-			completed: true,
-		},
 	]);
 
 	// ativa e desativa o checkbox
@@ -35,10 +31,17 @@ export default function TaskList() {
 			),
 		);
 	};
+    
+    const router = useRouter();
 
 	return (
 		<main className="container mx-auto p-4">
-			<h1 className="text-2xl font-bold mb-4">Lista de Tarefas</h1>
+			<div className="flex justify-between">
+				<h1 className="text-2xl font-bold mb-4 text-current">
+					Lista de Tarefas
+				</h1>
+				<Button id="close" onClick={() => router.push("http://localhost:3000")}>Sair</Button>
+			</div>
 			<section className="space-y-4">
 				{tasks.map((task) => (
 					<Card key={task.id}>
