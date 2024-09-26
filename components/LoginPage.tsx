@@ -26,7 +26,7 @@ export default function LoginPage() {
 	//acessando a página principal
 	useEffect(() => {
 		if (isLoggedIn) {
-			router.push("/tasklist");
+			router.push("/dashboard");
 		}
 	}, [isLoggedIn, router]);
 
