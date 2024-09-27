@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import teamChecklist from "../app/assets/team checklist.svg";
 
-import { Label } from "@radix-ui/react-label";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -15,6 +14,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Label } from "@radix-ui/react-label";
 
 export default function LoginPage() {
 	const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ export default function LoginPage() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const router = useRouter();
 
-	//acessando a página principal
+	//vai para a página principal ao fazer o login
 	useEffect(() => {
 		if (isLoggedIn) {
 			router.push("/dashboard");
@@ -41,13 +41,19 @@ export default function LoginPage() {
 	};
 
 	return (
-		<main className="flex items-center h-full w-full">
-			<section className="flex justify-center w-1/2 ">
-				<Image src={teamChecklist} alt="Checklist" className="w-full" />
+		<main className="flex flex-col justify-center md:flex-row min-h-screen">
+			<section className="hidden md:flex md:w-1/2 items-center justify-center bg-primary p-4">
+				<Image
+					src={teamChecklist}
+					alt="Checklist"
+					className="w-full max-w-md h-auto"
+					width={400}
+					height={400}
+				/>
 			</section>
 
-			<section className="flex justify-center items-center w-1/2 h-full bg-primary-foreground">
-				<Card className="w-full h-80 max-w-xl">
+			<section className="flex w-full h-screen md:w-1/2 items-center justify-center bg-primary-foreground p-4">
+				<Card className="w-full max-w-md">
 					<CardHeader>
 						<CardTitle className="text-2xl font-bold tracking-tighter text-center">
 							Entre com sua conta
@@ -69,7 +75,7 @@ export default function LoginPage() {
 									required
 								/>
 							</div>
-							<div className="mt-4">
+							<div>
 								<Label htmlFor="password">Senha</Label>
 								<Input
 									id="password"
@@ -81,7 +87,7 @@ export default function LoginPage() {
 								/>
 							</div>
 							{error && <p className="text-red-500">{error}</p>}
-							<Button type="submit" className="mt-6 w-full">
+							<Button type="submit" className="w-full">
 								Entrar
 							</Button>
 						</form>
