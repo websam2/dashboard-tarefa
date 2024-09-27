@@ -4,6 +4,11 @@ Este projeto é um dashboard simples para gerenciamento de tarefas, construído 
 
 ![alt text](/app/assets/demostracao.png)
 
+Deploy na Vercel:
+   ```
+   https://dashboard-tarefa.vercel.app/
+   ```
+
 ## Funcionalidades
 
 - Página de login 
@@ -41,9 +46,15 @@ Este projeto é um dashboard simples para gerenciamento de tarefas, construído 
 
 ## Acesso do DashBoard (temporário)
 
-Está escrino nas labels dos inputs:
-Login: exemplo@email.com
-Senha: 123
+Login e Senha está escrito nas labels dos inputs:
+Login: 
+   ```
+   exemplo@email.com
+   ```
+Senha: 
+   ```
+   123
+   ```
 
 ## Build para produção
 
@@ -60,10 +71,7 @@ npm start
 ## Estrutura do projeto
 
 - `/dashboard`: Página inicial para o cadastro das Tarefas.
-- `/components`: 
--LoginPage "Login de acesso";
--AddTaskForm "Formulário para descrever a tarefa com Título e Descrição";
--TaskList "Tarefas que serão adicionadas".
+- `/components`: LoginPage "Login de acesso", AddTaskForm "Formulário para descrever a tarefa com Título e Descrição" e TaskList "Tarefas que serão adicionadas".
 
 
 
