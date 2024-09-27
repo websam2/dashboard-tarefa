@@ -1,10 +1,8 @@
 "use client";
-import { useState } from "react";
-import {useRouter} from "next/navigation"; 
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Trash } from "lucide-react";
 
 interface Task {
 	id: number;
@@ -13,56 +11,47 @@ interface Task {
 	completed: boolean;
 }
 
-export default function TaskList() {
-	const [tasks, setTasks] = useState<Task[]>([
-		{
-			id: 1,
-			title: "Tarefa 1",
-			description: "Descrição da tarefa 1",
-			completed: false,
-		},
-	]);
+interface TaskListProps {
+	tasks: Task[];
+	onToggleStatus: (id: number) => void;
+	onDeleteTask: (id: number) => void;
+}
 
-	// ativa e desativa o checkbox
-	const toggleTaskStatus = (id: number) => {
-		setTasks(
-			tasks.map((task) =>
-				task.id === id ? { ...task, completed: !task.completed } : task,
-			),
-		);
-	};
-
-    const router = useRouter();
-
+export default function TaskList({
+	tasks,
+	onToggleStatus,
+	onDeleteTask,
+}: TaskListProps) {
 	return (
-		<main className="container mx-auto p-4">
-			<div className="flex justify-between">
-				<h1 className="text-2xl font-bold mb-4 text-current">
-					Lista de Tarefas
-				</h1>
-				<Button id="close" onClick={() => router.push("http://localhost:3000")}>Sair</Button>
-			</div>
-			<section className="space-y-4">
-				{tasks.map((task) => (
-					<Card key={task.id}>
-						<CardHeader>
-							<CardTitle className="flex items-center justify-between">
-								<span>{task.title}</span>
+		<section className="space-y-4">
+			{tasks.map((task) => (
+				<Card key={task.id}>
+					<CardHeader>
+						<CardTitle className="flex items-center justify-between">
+							<span>{task.title}</span>
+							<div className="flex relative items-center space-x-2">
 								<Checkbox
 									checked={task.completed}
-									onCheckedChange={() => toggleTaskStatus(task.id)}
+									onCheckedChange={() => onToggleStatus(task.id)}
 								/>
-							</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<p>{task.description}</p>
-							<p className="mt-2 text-sm text-gray-500">
-								Status: {task.completed ? "Concluída" : "Pendente"}
-							</p>
-						</CardContent>
-					</Card>
-				))}
-			</section>
-		</main>
+								<Button
+									className="bg-destructive absolute top-20 left-0 "
+									size="icon"
+									onClick={() => onDeleteTask(task.id)}
+								>
+									<Trash className="h-4 w-4" />
+								</Button>
+							</div>
+						</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p>{task.description}</p>
+						<p className="mt-2 text-sm text-gray-500">
+							Status: {task.completed ? "Concluída" : "Pendente"}
+						</p>
+					</CardContent>
+				</Card>
+			))}
+		</section>
 	);
 }
