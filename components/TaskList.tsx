@@ -23,23 +23,19 @@ export default function TaskList({
   onDeleteTask,
   onMoveTask,
 }: TaskListProps) {
-  const formatDate = (date: Date | undefined) => {
+  const formatDate = (date: Date | null) => {
     if (!date) return "Data não disponível";
-    return date instanceof Date
-      ? date.toLocaleDateString()
-      : new Date(date).toLocaleDateString();
+    return date.toLocaleDateString();
   };
 
- 
-
   return (
-   
     <section className="space-y-4">
       {tasks.length === 0 ? (
-        <p className="text-center text-muted-foreground">Nenhuma tarefa encontrada.</p>
+        <p className="text-center text-muted-foreground">
+          Nenhuma tarefa encontrada.
+        </p>
       ) : (
         tasks.map((task, index) => (
-          
           <Card key={task.id}>
             <CardHeader>
               <CardTitle className="flex items-center justify-between">
@@ -86,11 +82,10 @@ export default function TaskList({
                 <Trash className="h-4 w-4 mr-2" />
                 Excluir
               </Button>
-            </CardFooter>            
-          </Card>          
+            </CardFooter>
+          </Card>
         ))
       )}
     </section>
-    
   );
 }
