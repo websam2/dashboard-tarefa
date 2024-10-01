@@ -1,13 +1,12 @@
 # Dashboard de Tarefas
 
-Este projeto é um dashboard simples para gerenciamento de tarefas, construído com Next, Tailwind e Shadcn.
+Este projeto é um dashboard simples para gerenciamento de tarefas, construído com Next, Tailwind, Shadcn e Magicui.
 
 ![alt text](/app/assets/demostracao.png)
 
 Deploy na Vercel:
-   ```
-   https://dashboard-tarefa.vercel.app/
-   ```
+[https://dashboard-tarefa.vercel.app/](https://dashboard-tarefa.vercel.app/)
+  
 
 ## Funcionalidades
 
