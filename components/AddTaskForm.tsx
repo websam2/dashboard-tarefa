@@ -55,19 +55,17 @@ export default function AddTaskForm({ onAddTask }: AddTaskFormProps) {
 					/>
 					<CalendarForm onDateSelect={handleDateSelect} />
 					<Button type="submit" disabled={!title || !description || !date}>
-					<Confetti
-				ref={confettiRef}
-				className="absolute left-0 top-0 z-0 size-full"
-				onMouseEnter={() => {
-					confettiRef.current?.fire({});
-				}}
-			/>
+						<Confetti
+							ref={confettiRef}
+							className="absolute left-0 top-0 -z-50 size-full"
+							onMouseEnter={() => {
+								confettiRef.current?.fire({});
+							}}
+						/>
 						Adicionar Tarefa
 					</Button>
 				</form>
-				
 			</CardContent>
-			
 		</Card>
 	);
 }
