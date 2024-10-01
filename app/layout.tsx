@@ -10,8 +10,8 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-	title: "Dashboard de Tarefas Simples",
-	description: "Uma simples dashboard para gerenciar tarefas",
+	title: "Gerenciador de Tarefas",
+	description: "Dashboard para gerenciar suas tarefas",
 };
 
 export default function RootLayout({
